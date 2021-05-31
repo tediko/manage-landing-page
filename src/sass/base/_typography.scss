@@ -1,0 +1,12 @@
+@use '../utilities/' as *;
+
+body {
+    font-size: 16px;
+    font-family: $ff-primary;
+}
+
+/* Anchor elements */
+a {
+    text-decoration: none;
+    color: inherit;
+}

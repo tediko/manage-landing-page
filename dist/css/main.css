@@ -1,1 +1,105 @@
+@charset "UTF-8";
+/* Box sizing rules */
+/* Remove default margin and padding */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Remove list styles on ul, ol elements*/
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+*::before,
+*::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* Colors */
+/* Fonts */
+/* Media query breakpoints */
+/* Mixin to manage responsive breakpoints */
+body {
+  font-size: 16px;
+  font-family: "Be Vietnam", sans-serif;
+}
+
+/* Anchor elements */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@font-face {
+  font-family: "icons";
+  src: url("../fonts/icons.ttf?cf1i06") format("truetype"), url("../fonts/icons.woff?cf1i06") format("woff"), url("../fonts/icons.svg?cf1i06#icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i-fb:before {
+  content: "";
+  color: #fff;
+}
+
+.i-inst:before {
+  content: "";
+  color: #fff;
+}
+
+.i-pint:before {
+  content: "";
+  color: #fff;
+}
+
+.i-tt:before {
+  content: "";
+  color: #fff;
+}
+
+.i-yt:before {
+  content: "";
+  color: #fff;
+}
+
+/* Base */
+/* Vendors */
+/* Utilities */
+/* Components */
+/* Layout */

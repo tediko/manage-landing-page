@@ -1,0 +1,20 @@
+/* Colors */
+$c-white: hsl(0, 0%, 100%);
+$c-black: hsl(0, 0%, 0%);
+$c-red-bright: hsl(12, 88%, 59%);
+$c-red-very-pale: hsl(13, 100%, 96%);
+$c-blue-dark: hsl(228, 39%, 23%);
+$c-blue-dark-grayish: hsl(227, 12%, 61%);
+$c-blue-dark-very: hsl(233, 12%, 13%);
+$c-gray-light: hsl(0, 0%, 98%);
+
+
+/* Fonts */
+$ff-primary: 'Be Vietnam', sans-serif;
+
+/* Media query breakpoints */
+$breakpoints: (
+    sm: 480px,
+    md: 768px,
+    lg: 1024px
+);
