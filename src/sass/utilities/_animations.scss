@@ -1,2 +1,54 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
+
+/* Header */
+@keyframes navOpen {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+        visibility: hidden;
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        visibility: visible;
+    }
+}
+
+@keyframes navClose {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+        visibility: hidden;
+    }
+}
+
+@keyframes itemSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes itemSlideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
