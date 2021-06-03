@@ -1,7 +1,7 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
 
-.overlay {
+.menu-overlay {
     position: fixed;
     inset: 0;
     background: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.4));
