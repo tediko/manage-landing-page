@@ -41,6 +41,101 @@ ol {
 /* Fonts */
 /* Media query breakpoints */
 /* Mixin to manage responsive breakpoints */
+/* Header */
+@-webkit-keyframes navOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    visibility: hidden;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+}
+@keyframes navOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    visibility: hidden;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+}
+@-webkit-keyframes navClose {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+    visibility: hidden;
+  }
+}
+@keyframes navClose {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes itemSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes itemSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes itemSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+}
+@keyframes itemSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+}
 body {
   font-size: 16px;
   font-family: "Be Vietnam", sans-serif;
@@ -109,12 +204,6 @@ i {
   opacity: 1;
 }
 
-body {
-  background-image: url("../../design/mobile-navigation.jpg");
-  background-size: 375px auto;
-  background-repeat: no-repeat;
-}
-
 .header {
   position: absolute;
   width: 100%;
@@ -137,13 +226,84 @@ body {
 }
 .header__nav.menu-open .header__menu-cta-bars::before {
   top: 0;
-  transition: top 75ms ease, opacity 75ms ease 0.12s;
+  transition: top 200ms ease, opacity 200ms ease 0.12s;
   opacity: 0;
 }
 .header__nav.menu-open .header__menu-cta-bars::after {
   top: 0;
-  transition: top 75ms ease, transform 75ms cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+  transition: top 200ms ease, transform 200ms cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
   transform: rotate(-90deg);
+}
+.header__nav.nav-open .header__list {
+  -webkit-animation: navOpen 500ms ease-in forwards;
+          animation: navOpen 500ms ease-in forwards;
+}
+.header__nav.nav-open .header__item:nth-child(1) {
+  -webkit-animation: itemSlideIn 500ms ease-in forwards;
+          animation: itemSlideIn 500ms ease-in forwards;
+  -webkit-animation-delay: 100ms;
+          animation-delay: 100ms;
+}
+.header__nav.nav-open .header__item:nth-child(2) {
+  -webkit-animation: itemSlideIn 500ms ease-in forwards;
+          animation: itemSlideIn 500ms ease-in forwards;
+  -webkit-animation-delay: 200ms;
+          animation-delay: 200ms;
+}
+.header__nav.nav-open .header__item:nth-child(3) {
+  -webkit-animation: itemSlideIn 500ms ease-in forwards;
+          animation: itemSlideIn 500ms ease-in forwards;
+  -webkit-animation-delay: 300ms;
+          animation-delay: 300ms;
+}
+.header__nav.nav-open .header__item:nth-child(4) {
+  -webkit-animation: itemSlideIn 500ms ease-in forwards;
+          animation: itemSlideIn 500ms ease-in forwards;
+  -webkit-animation-delay: 400ms;
+          animation-delay: 400ms;
+}
+.header__nav.nav-open .header__item:nth-child(5) {
+  -webkit-animation: itemSlideIn 500ms ease-in forwards;
+          animation: itemSlideIn 500ms ease-in forwards;
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+.header__nav.nav-close .header__list {
+  -webkit-animation: navClose 700ms ease-in forwards;
+          animation: navClose 700ms ease-in forwards;
+}
+.header__nav.nav-close .header__item {
+  opacity: 1;
+}
+.header__nav.nav-close .header__item:nth-child(1) {
+  -webkit-animation: itemSlideOut 500ms ease-in forwards;
+          animation: itemSlideOut 500ms ease-in forwards;
+  -webkit-animation-delay: 100ms;
+          animation-delay: 100ms;
+}
+.header__nav.nav-close .header__item:nth-child(2) {
+  -webkit-animation: itemSlideOut 500ms ease-in forwards;
+          animation: itemSlideOut 500ms ease-in forwards;
+  -webkit-animation-delay: 200ms;
+          animation-delay: 200ms;
+}
+.header__nav.nav-close .header__item:nth-child(3) {
+  -webkit-animation: itemSlideOut 500ms ease-in forwards;
+          animation: itemSlideOut 500ms ease-in forwards;
+  -webkit-animation-delay: 300ms;
+          animation-delay: 300ms;
+}
+.header__nav.nav-close .header__item:nth-child(4) {
+  -webkit-animation: itemSlideOut 500ms ease-in forwards;
+          animation: itemSlideOut 500ms ease-in forwards;
+  -webkit-animation-delay: 400ms;
+          animation-delay: 400ms;
+}
+.header__nav.nav-close .header__item:nth-child(5) {
+  -webkit-animation: itemSlideOut 500ms ease-in forwards;
+          animation: itemSlideOut 500ms ease-in forwards;
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
 }
 .header__menu-cta {
   display: flex;
@@ -161,7 +321,7 @@ body {
   height: 4px;
   background-color: #242d52;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  transition-duration: 75ms;
+  transition-duration: 200ms;
 }
 .header__menu-cta-bars::before, .header__menu-cta-bars::after {
   position: absolute;
@@ -173,14 +333,14 @@ body {
 }
 .header__menu-cta-bars::before {
   top: -7px;
-  transition: top 75ms ease 0.12s, opacity 75ms ease;
+  transition: top 200ms ease 0.12s, opacity 200ms ease;
 }
 .header__menu-cta-bars::after {
   top: 7px;
-  transition: top 75ms ease 0.12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: top 200ms ease 0.12s, transform 200ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .header__list {
-  visibility: visible;
+  visibility: hidden;
   position: absolute;
   display: flex;
   flex-flow: column;
@@ -194,11 +354,13 @@ body {
   margin: 24px;
   background: white;
   border-radius: 4px;
+  opacity: 0;
 }
 .header__item {
   font-weight: 600;
   letter-spacing: -0.2px;
   color: #242d52;
+  opacity: 0;
 }
 .header__cta {
   display: none;
