@@ -4,7 +4,15 @@
     $root: &;
     position: absolute;
     width: 100%;
-    padding: clamp(24px, 6vw, 55px) 24px 0 24px;
+    padding: 24px 24px 0 24px;
+
+    @include breakpoint(md) {
+        padding: 35px 24px 0 24px;
+    }
+
+    @include breakpoint(lg) {
+        padding: 55px 24px 0 24px;
+    }
 
     &__container {
         display: flex;
