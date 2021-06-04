@@ -4,7 +4,7 @@
     $root: &;
     position: absolute;
     width: 100%;
-    padding: 24px;
+    padding: clamp(24px, 6vw, 55px) 24px 0 24px;
 
     &__container {
         display: flex;
@@ -15,7 +15,7 @@
 
     &__image {
         display: block;
-        width: 110px;
+        width: clamp(110px, 14.5vw, 146px);
     }
 
     &__nav {
@@ -83,6 +83,10 @@
         border: none;
         background-color: transparent;
         cursor: pointer;
+
+        @include breakpoint(md) {
+            display: none;
+        }
     }
 
     &__menu-cta-bars {
@@ -124,14 +128,28 @@
         justify-content: center;
         align-items: center;
         gap: 24px;
-        top: 79px;
-        left: 0;
-        right: 0;
+        inset: 79px 0 0 0;
         height: 291px;
         margin: 24px;
         background: $c-white;
         border-radius: 4px;
         opacity: 0;
+
+        @include breakpoint(md) {
+            visibility: visible;
+            position: relative;
+            flex-flow: row;
+            inset: unset;
+            height: unset;
+            background: transparent;
+            border-radius: 0;
+            opacity: 1;
+        }
+        
+        @include breakpoint(lg) {
+            gap: 33px;
+            margin: 0 0 13px -11px;
+        }
     }
 
     &__item {
@@ -139,9 +157,20 @@
         letter-spacing: -0.2px;
         color: $c-blue-dark;
         opacity: 0;
+        
+        @include breakpoint(md) {
+            font-size: 0.82rem;
+            font-weight: 500;
+            opacity: 1;
+        }
     }
 
     &__cta {
         display: none;
+
+        @include breakpoint(lg) {
+            display: flex;
+            margin-bottom: 15px;
+        }
     }
 }

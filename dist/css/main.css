@@ -193,6 +193,13 @@ i {
   color: #fff;
 }
 
+/* Spacing */
+.container {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+/* Overlay for menu */
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -207,7 +214,7 @@ i {
 .header {
   position: absolute;
   width: 100%;
-  padding: 24px;
+  padding: clamp(24px, 6vw, 55px) 24px 0 24px;
 }
 .header__container {
   display: flex;
@@ -217,7 +224,7 @@ i {
 }
 .header__image {
   display: block;
-  width: 110px;
+  width: clamp(110px, 14.5vw, 146px);
 }
 .header__nav.menu-open .header__menu-cta-bars {
   transition-delay: 0.12s;
@@ -315,6 +322,11 @@ i {
   background-color: transparent;
   cursor: pointer;
 }
+@media (min-width: 768px) {
+  .header__menu-cta {
+    display: none;
+  }
+}
 .header__menu-cta-bars {
   position: relative;
   width: 100%;
@@ -347,14 +359,30 @@ i {
   justify-content: center;
   align-items: center;
   gap: 24px;
-  top: 79px;
-  left: 0;
-  right: 0;
+  inset: 79px 0 0 0;
   height: 291px;
   margin: 24px;
   background: white;
   border-radius: 4px;
   opacity: 0;
+}
+@media (min-width: 768px) {
+  .header__list {
+    visibility: visible;
+    position: relative;
+    flex-flow: row;
+    inset: unset;
+    height: unset;
+    background: transparent;
+    border-radius: 0;
+    opacity: 1;
+  }
+}
+@media (min-width: 1024px) {
+  .header__list {
+    gap: 33px;
+    margin: 0 0 13px -11px;
+  }
 }
 .header__item {
   font-weight: 600;
@@ -362,8 +390,46 @@ i {
   color: #242d52;
   opacity: 0;
 }
+@media (min-width: 768px) {
+  .header__item {
+    font-size: 0.82rem;
+    font-weight: 500;
+    opacity: 1;
+  }
+}
 .header__cta {
   display: none;
+}
+@media (min-width: 1024px) {
+  .header__cta {
+    display: flex;
+    margin-bottom: 15px;
+  }
+}
+
+.btn, .btn--start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.btn--start {
+  width: 137px;
+  height: 44px;
+  font-size: 0.825rem;
+}
+.btn--red {
+  background-color: #f25f3a;
+  border: 2px solid #e1390e;
+  box-shadow: 0px 10px 13px -5px rgba(242, 95, 58, 0.65);
+  color: white;
+}
+.btn--white {
+  background-color: white;
+  border: 2px solid #eb3b0f;
+  color: #f25f3a;
 }
 
 /* Base */
