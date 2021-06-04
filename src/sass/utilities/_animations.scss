@@ -52,3 +52,12 @@
         transform: translateX(50px);
     }
 }
+
+@keyframes link-hover-shine {
+    0% {
+      mask-position: 150%;
+    }
+    100% {
+      mask-position: -50%;
+    }
+}
