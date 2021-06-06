@@ -1,12 +1,5 @@
 @use '../utilities/' as *;
 
-/* body {
-    background-image: url('../../design/desktop-design.jpg');
-    background-size: 1440px auto;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-} */
-
 .kv {
     $root: &;
     position: relative;
@@ -15,7 +8,6 @@
 
     &::before {
         position: absolute;
-        display: block;
         content: "";
         background-image: url("../img/bg-tablet-pattern.svg");
         background-size: clamp(450px, 112vw, 621px);
@@ -23,7 +15,7 @@
         top: -105px;
         left: 15vw;
         width: 100%;
-        height: 800px;
+        height: 100%;
         z-index: -1;
 
         @include breakpoint(md) {
@@ -32,8 +24,9 @@
         }
 
         @include breakpoint(lg) {
-            background-size: 793px;
-            top: -132px;
+            background-size: 792px;
+            top: -133px;
+            right: -54vw;
             height: 860px;
         }
     }
@@ -53,7 +46,6 @@
     }
 
     &__illustration {
-        display: block;
         background-image: url('../img/illustration-intro.svg');
         background-size: cover;
         background-repeat: no-repeat;
