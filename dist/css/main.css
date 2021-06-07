@@ -243,7 +243,7 @@ i {
 .heading--xxl {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   line-height: 1.26;
-  letter-spacing: -1px;
+  letter-spacing: -0.0625rem;
 }
 @media (min-width: 1024px) {
   .heading--xxl {
@@ -251,7 +251,13 @@ i {
   }
 }
 .heading--xl {
-  font-size: 1.8rem;
+  font-size: clamp(1.8rem, 4vw, 2.45rem);
+}
+@media (min-width: 1024px) {
+  .heading--xl {
+    line-height: 1.19;
+    letter-spacing: -0.02rem;
+  }
 }
 .heading--l {
   font-size: 0.97rem;
@@ -270,8 +276,13 @@ i {
   }
 }
 .paragraph--l {
-  font-size: 0.874rem;
+  font-size: clamp(0.874rem, 4vw, 1rem);
   line-height: 1.95;
+}
+@media (min-width: 768px) {
+  .paragraph--l {
+    line-height: 1.65;
+  }
 }
 
 .btn, .btn--start {
@@ -633,6 +644,13 @@ i {
   }
 }
 
+body {
+  background-image: url(../../design/desktop-design.jpg);
+  background-size: 1440px auto;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
 .about {
   position: relative;
 }
@@ -649,15 +667,38 @@ i {
   height: 100%;
   max-width: 500px;
 }
+@media (min-width: 768px) {
+  .about {
+    padding: 0 24px;
+  }
+}
+@media (min-width: 768px) {
+  .about__container {
+    display: flex;
+  }
+}
 .about__info {
   display: flex;
   flex-flow: column;
   text-align: center;
   padding: 0 31px;
 }
+@media (min-width: 768px) {
+  .about__info {
+    text-align: left;
+    padding: 0;
+    width: 50%;
+  }
+}
 .about__info-text {
   max-width: 500px;
   margin: 16px auto 0 auto;
+}
+@media (min-width: 768px) {
+  .about__info-text {
+    margin: 28px 0;
+    max-width: 360px;
+  }
 }
 .about__features {
   display: flex;
@@ -666,6 +707,13 @@ i {
   padding-left: 16px;
   max-width: 600px;
   margin: 55px auto 0 auto;
+}
+@media (min-width: 768px) {
+  .about__features {
+    padding-left: 0;
+    margin: 0 auto;
+    width: 50%;
+  }
 }
 .about__features-title {
   position: relative;
@@ -686,6 +734,11 @@ i {
   background: #f25f3a;
   color: white;
   border-radius: 25px;
+}
+@media (min-width: 480px) {
+  .about__features-title {
+    border-radius: 0 30px 30px 0;
+  }
 }
 .about__features-text {
   margin-top: 9px;
