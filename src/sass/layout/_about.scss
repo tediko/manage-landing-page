@@ -1,7 +1,22 @@
 @use '../utilities/' as *;
 
 .about {
+    position: relative;
     $root: &;
+
+    &::before {
+        position: absolute;
+        content: "";
+        background-image: url("../img/bg-tablet-pattern.svg");
+        background-size: 80%;
+        background-repeat: no-repeat;
+        z-index: -1;
+        top: -309px;
+        right: -240px;
+        width: 100%;
+        height: 100%;
+        max-width: 500px;
+    }
 
     &__info {
         display: flex;
