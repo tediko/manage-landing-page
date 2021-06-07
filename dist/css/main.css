@@ -523,6 +523,10 @@ i {
   }
 }
 
+.main-container {
+  overflow-x: hidden;
+}
+
 .kv {
   position: relative;
   padding: 0 24px;
@@ -629,6 +633,22 @@ i {
   }
 }
 
+.about {
+  position: relative;
+}
+.about::before {
+  position: absolute;
+  content: "";
+  background-image: url("../img/bg-tablet-pattern.svg");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  top: -309px;
+  right: -240px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+}
 .about__info {
   display: flex;
   flex-flow: column;

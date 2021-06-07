@@ -1,0 +1,6 @@
+@use '../utilities/' as *;
+
+.main-container {
+    $root: &;
+    overflow-x: hidden;
+}

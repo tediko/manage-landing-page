@@ -10,113 +10,93 @@
   <title>Frontend Mentor | Manage landing page</title>
 </head>
 <body>
-  <!-- Menu overlay background  -->
-  <div class="menu-overlay" data-menu-overlay></div>
+  <!-- Main container -->
+  <main class="main-container">
+    <!-- Menu overlay background  -->
+    <div class="menu-overlay" data-menu-overlay></div>
 
-  <!-- Key Visual -->
-  <section class="kv" data-kv>
-    <!-- Header -->
-    <header class="header" data-header>
-      <div class="header__container container">
-        <a href="#" class="header__logo">
-          <img class="header__image" src="./img/logo.svg" alt="Manage - home page">
-        </a>
-        <nav class="header__nav" data-nav>
-          <button class="header__menu-cta" aria-label="Menu toggle" aria-expanded="false" aria-controls="nav-list" data-menu-cta>
-            <span class="header__menu-cta-bars"></span>
-          </button>
-          <ul id="nav-list" class="header__list">
-            <li class="header__item">
-              <a href="#" class="header__link">Pricing</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">Product</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">About Us</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">Careers</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">Community</a>
-            </li>
-          </ul>
-        </nav>
-        <a href="#" class="header__cta btn--start btn--red">Get Started</a>
+    <!-- Key Visual -->
+    <section class="kv" data-kv>
+      <!-- Header -->
+      <header class="header" data-header>
+        <div class="header__container container">
+          <a href="#" class="header__logo">
+            <img class="header__image" src="./img/logo.svg" alt="Manage - home page">
+          </a>
+          <nav class="header__nav" data-nav>
+            <button class="header__menu-cta" aria-label="Menu toggle" aria-expanded="false" aria-controls="nav-list" data-menu-cta>
+              <span class="header__menu-cta-bars"></span>
+            </button>
+            <ul id="nav-list" class="header__list">
+              <li class="header__item">
+                <a href="#" class="header__link">Pricing</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link">Product</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link">About Us</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link">Careers</a>
+              </li>
+              <li class="header__item">
+                <a href="#" class="header__link">Community</a>
+              </li>
+            </ul>
+          </nav>
+          <a href="#" class="header__cta btn--start btn--red">Get Started</a>
+        </div>
+      </header>
+      
+      <div class="kv__container container">
+        <div class="kv__illustration"></div>
+        <div class="kv__intro">
+          <h1 class="kv__title heading--xxl">Bring everyone together to build better products.</h1>
+          <p class="kv__text paragraph--xl">Manage makes it simple for software teams to plan day-to-day 
+            tasks while keeping the larger team goals in view.</p>
+          <a href="#" class="kv__cta btn--start btn--red">Get Started</a>
+        </div>
       </div>
-    </header>
-    
-    <div class="kv__container container">
-      <div class="kv__illustration"></div>
-      <div class="kv__intro">
-        <h1 class="kv__title heading--xxl">Bring everyone together to build better products.</h1>
-        <p class="kv__text paragraph--xl">Manage makes it simple for software teams to plan day-to-day 
-          tasks while keeping the larger team goals in view.</p>
-        <a href="#" class="kv__cta btn--start btn--red">Get Started</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="about" data-about>
-    <div class="about__container container">
-      <div class="about__info">
-        <h2 class="about__info-title heading--xl">What’s different about Manage?</h2>
-        <p class="about__info-text paragraph--l">Manage provides all the functionality your team needs, without 
-          the complexity. Our software is tailor-made for modern digital 
-          product teams.</p>
+    <!-- About -->
+    <section class="about" data-about>
+      <div class="about__container container">
+        <div class="about__info">
+          <h2 class="about__info-title heading--xl">What’s different about Manage?</h2>
+          <p class="about__info-text paragraph--l">Manage provides all the functionality your team needs, without 
+            the complexity. Our software is tailor-made for modern digital 
+            product teams.</p>
+        </div>
+        <div class="about__features">
+          <!-- Card 001 -->
+          <div class="about__features-card">
+            <h3 class="about__features-title heading--l">Track company-wide progress</h3>
+            <p class="about__features-text paragraph--l">See how your day-to-day tasks fit into the wider vision. Go from 
+              tracking progress at the milestone level all the way done to the 
+              smallest of details. Never lose sight of the bigger picture again.</p>
+          </div>
+          <!-- Card 002 -->
+          <div class="about__features-card">
+            <h3 class="about__features-title heading--l">Advanced built-in reports</h3>
+            <p class="about__features-text paragraph--l">Set internal delivery estimates and track progress toward company 
+              goals. Our customisable dashboard helps you build out the reports 
+              you need to keep key stakeholders informed.</p>
+          </div>
+          <!-- Card 003 -->
+          <div class="about__features-card">
+            <h3 class="about__features-title heading--l">Everything you need in one place</h3>
+            <p class="about__features-text paragraph--l">Stop jumping from one service to another to communicate, store files, 
+              track tasks and share documents. Manage offers an all-in-one team 
+              productivity solution.</p>
+          </div>
+        </div>
       </div>
-      <div class="about__features">
-        <!-- Card 001 -->
-        <div class="about__features-card">
-          <h3 class="about__features-title heading--l">Track company-wide progress</h3>
-          <p class="about__features-text paragraph--l">See how your day-to-day tasks fit into the wider vision. Go from 
-            tracking progress at the milestone level all the way done to the 
-            smallest of details. Never lose sight of the bigger picture again.</p>
-        </div>
-        <!-- Card 002 -->
-        <div class="about__features-card">
-          <h3 class="about__features-title heading--l">Advanced built-in reports</h3>
-          <p class="about__features-text paragraph--l">Set internal delivery estimates and track progress toward company 
-            goals. Our customisable dashboard helps you build out the reports 
-            you need to keep key stakeholders informed.</p>
-        </div>
-        <!-- Card 003 -->
-        <div class="about__features-card">
-          <h3 class="about__features-title heading--l">Everything you need in one place</h3>
-          <p class="about__features-text paragraph--l">Stop jumping from one service to another to communicate, store files, 
-            track tasks and share documents. Manage offers an all-in-one team 
-            productivity solution.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
 <!--
-  What’s different about Manage?
-
-  Manage provides all the functionality your team needs, without 
-  the complexity. Our software is tailor-made for modern digital 
-  product teams. 
-
-  01
-  Track company-wide progress
-  See how your day-to-day tasks fit into the wider vision. Go from 
-  tracking progress at the milestone level all the way done to the 
-  smallest of details. Never lose sight of the bigger picture again.
-
-  02
-  Advanced built-in reports
-  Set internal delivery estimates and track progress toward company 
-  goals. Our customisable dashboard helps you build out the reports 
-  you need to keep key stakeholders informed.
-
-  03
-  Everything you need in one place
-  Stop jumping from one service to another to communicate, store files, 
-  track tasks and share documents. Manage offers an all-in-one team 
-  productivity solution.
-
   What they’ve said
 
   Anisha Li
