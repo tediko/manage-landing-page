@@ -629,6 +629,49 @@ i {
   }
 }
 
+.about__info {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  padding: 0 31px;
+}
+.about__info-text {
+  max-width: 500px;
+  margin: 16px auto 0 auto;
+}
+.about__features {
+  display: flex;
+  flex-flow: column;
+  gap: 49px;
+  padding-left: 16px;
+  max-width: 600px;
+  margin: 55px auto 0 auto;
+}
+.about__features-title {
+  position: relative;
+  margin-left: 49px;
+  background-color: #ffefeb;
+  padding: 8px 0 8px 33px;
+}
+.about__features-title::before {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "0" counter(heading);
+  counter-increment: heading;
+  inset: 0 0 0 -49px;
+  width: 67px;
+  height: 100%;
+  background: #f25f3a;
+  color: white;
+  border-radius: 25px;
+}
+.about__features-text {
+  margin-top: 9px;
+  max-width: clamp(342px, 91vw, 555px);
+}
+
 /* Base */
 /* Vendors */
 /* Utilities */
