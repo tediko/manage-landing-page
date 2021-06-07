@@ -159,6 +159,7 @@ ol {
 body {
   font-size: 16px;
   font-family: "Be Vietnam", sans-serif;
+  counter-reset: heading;
 }
 
 /* Anchor elements */
@@ -234,23 +235,30 @@ i {
 }
 
 /* Headings */
-.heading, .heading--xxl {
+.heading, .heading--l, .heading--xl, .heading--xxl {
   font-weight: 700;
-  letter-spacing: -1px;
   color: #242d52;
+  line-height: 1.5;
 }
 .heading--xxl {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   line-height: 1.26;
+  letter-spacing: -1px;
 }
 @media (min-width: 1024px) {
   .heading--xxl {
     line-height: 1.14;
   }
 }
+.heading--xl {
+  font-size: 1.8rem;
+}
+.heading--l {
+  font-size: 0.97rem;
+}
 
 /* Paragraphs */
-.paragraph, .paragraph--xl {
+.paragraph, .paragraph--l, .paragraph--xl {
   color: #9095a7;
 }
 .paragraph--xl {
@@ -261,6 +269,10 @@ i {
     line-height: 1.66;
   }
 }
+.paragraph--l {
+  font-size: 0.874rem;
+  line-height: 1.95;
+}
 
 .btn, .btn--start {
   display: flex;
@@ -270,6 +282,7 @@ i {
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 300ms ease-in, border 300ms ease-in;
 }
 .btn--start {
   width: 137px;
@@ -281,6 +294,10 @@ i {
   border: 2px solid #e1390e;
   box-shadow: 0px 10px 13px -5px rgba(242, 95, 58, 0.65);
   color: white;
+}
+.btn--red:hover {
+  background-color: #f6866a;
+  border: 2px solid #f25f3a;
 }
 .btn--white {
   background-color: white;
@@ -538,7 +555,7 @@ i {
   }
 }
 .kv__container {
-  padding-top: 108px;
+  padding: 108px 0 95px 0;
 }
 @media (min-width: 768px) {
   .kv__container {
