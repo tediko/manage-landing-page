@@ -41,6 +41,7 @@
         }
 
         @include breakpoint(lg) {
+            height: 835px;
             padding-top: 209px;
         }
     }

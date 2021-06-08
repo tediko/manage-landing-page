@@ -581,6 +581,7 @@ i {
 }
 @media (min-width: 1024px) {
   .kv__container {
+    height: 835px;
     padding-top: 209px;
   }
 }
