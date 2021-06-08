@@ -645,13 +645,6 @@ i {
   }
 }
 
-body {
-  background-image: url(../../design/desktop-design.jpg);
-  background-size: 1440px auto;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-}
-
 .about {
   position: relative;
 }

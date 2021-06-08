@@ -16,6 +16,24 @@
         width: 100%;
         height: 100%;
         max-width: 500px;
+
+        @include breakpoint(md) {
+            background-size: 61%;
+            top: unset;
+            bottom: -288px;
+            left: -39vw;
+            max-width: unset;
+        }
+    }
+
+    @include breakpoint(md) {
+        padding: 0 24px;
+    }
+
+    &__container {
+        @include breakpoint(md) {
+            display: flex;
+        }
     }
 
     &__info {
@@ -23,11 +41,22 @@
         flex-flow: column;
         text-align: center;
         padding: 0 31px;
+
+        @include breakpoint(md) {
+            text-align: left;
+            padding: 0;
+            width: 50%;
+        }
     }
     
     &__info-text {
         max-width: 500px;
         margin: 16px auto 0 auto;
+
+        @include breakpoint(md) {
+            margin: 28px 0;
+            max-width: 360px;
+        }
     }
 
     &__features {
@@ -37,6 +66,16 @@
         padding-left: 16px;
         max-width: 600px;
         margin: 55px auto 0 auto;
+
+        @include breakpoint(md) {
+            padding-left: 0;
+            margin: 0 0 0 29px;
+            width: 50%;
+        }
+
+        @include breakpoint(lg) {
+            gap: 39px;
+        }
     }
 
     &__features-title {
@@ -58,11 +97,34 @@
             background: $c-red-bright;
             color: $c-white;
             border-radius: 25px;
+
+            @include breakpoint(lg) {
+                inset: 0 0 0 0;
+            }
+        }
+
+        @include breakpoint(sm) {
+            border-radius: 0 30px 30px 0;
+        }
+
+        @include breakpoint(lg) {
+            background-color: transparent;
+            margin: 0;
+            padding: 8px 0 8px 95px;
         }
     }
 
     &__features-text {
         margin-top: 9px;
         max-width: clamp(342px, 91vw, 555px);
+        
+        @include breakpoint(lg) {
+            max-width: 445px;
+            margin-left: 95px; // same value as features-title padding-left.
+        }
+
+        @media (min-width: 1600px) {
+            text-align: justify;
+        }
     }
 }
