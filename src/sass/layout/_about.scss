@@ -116,7 +116,13 @@
 
     &__features-text {
         margin-top: 9px;
+        padding-right: 12px;
         max-width: clamp(342px, 91vw, 555px);
+        
+
+        @media (min-width: 374px) {
+            padding-right: 0;
+        }
         
         @include breakpoint(lg) {
             max-width: 445px;

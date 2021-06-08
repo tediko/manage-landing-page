@@ -241,9 +241,14 @@ i {
   line-height: 1.5;
 }
 .heading--xxl {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: 2.2rem;
   line-height: 1.26;
   letter-spacing: -0.0625rem;
+}
+@media (min-width: 374px) {
+  .heading--xxl {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
 }
 @media (min-width: 1024px) {
   .heading--xxl {
@@ -260,7 +265,7 @@ i {
   }
 }
 .heading--l {
-  font-size: 0.97rem;
+  font-size: clamp(0.82rem, 4.2vw, 0.97rem);
 }
 
 /* Paragraphs */
@@ -762,7 +767,13 @@ i {
 }
 .about__features-text {
   margin-top: 9px;
+  padding-right: 12px;
   max-width: clamp(342px, 91vw, 555px);
+}
+@media (min-width: 374px) {
+  .about__features-text {
+    padding-right: 0;
+  }
 }
 @media (min-width: 1024px) {
   .about__features-text {
