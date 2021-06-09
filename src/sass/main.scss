@@ -11,8 +11,10 @@
 /* Components */
 @use 'components/buttons';
 @use 'components/header';
+@use 'components/slider';
 
 /* Layout */
 @use 'layout/main-container';
 @use 'layout/kv';
 @use 'layout/about';
+@use 'layout/testimonial';
