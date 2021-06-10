@@ -2,4 +2,17 @@
 
 .testimonial {
     $root: &;
+    padding: 0 20px;
+
+    &__title {
+        text-align: center;
+    }
+
+    &__slider {
+        padding: 90px 0 0 0;
+    }
+    
+    &__cta {
+        margin: 0 auto;
+    }
 }
