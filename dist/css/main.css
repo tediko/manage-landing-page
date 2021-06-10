@@ -220,6 +220,16 @@ i {
   margin: 0 auto;
 }
 
+/* Visually hiding content */
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Overlay for menu */
 .menu-overlay {
   visibility: hidden;
@@ -281,7 +291,8 @@ i {
   }
 }
 .paragraph--l {
-  font-size: clamp(0.874rem, 4vw, 1rem);
+  /* font-size: clamp(0.874rem, 4vw, 1rem); */
+  font-size: 0.89rem;
   line-height: 1.95;
 }
 @media (min-width: 768px) {
@@ -539,6 +550,72 @@ i {
   }
 }
 
+.slider {
+  overflow: hidden;
+}
+.slider__container {
+  display: flex;
+  align-items: center;
+}
+.slider__reference {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  min-width: 100%;
+  background-color: #fafafa;
+  text-align: center;
+  padding: 64px 20px 35px 20px;
+}
+.slider__reference::before {
+  position: absolute;
+  content: "";
+  inset: -32px 0 0 50%;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-size: cover;
+  transform: translateX(-50%);
+}
+.slider__reference--anisha::before {
+  background-image: url("../../dist/img/avatar-anisha.png");
+}
+.slider__reference--ali::before {
+  background-image: url("../../dist/img/avatar-ali.png");
+}
+.slider__reference--richard::before {
+  background-image: url("../../dist/img/avatar-richard.png");
+}
+.slider__reference--shanai::before {
+  background-image: url("../../dist/img/avatar-shanai.png");
+}
+.slider__reference-text {
+  margin-top: 18px;
+}
+.slider__switch {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+}
+.slider__switch-radio {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.slider__switch-radio:checked + .slider__switch-control {
+  background-color: #f25f3a;
+  border: none;
+}
+.slider__switch-control {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #f25f3a;
+  cursor: pointer;
+}
+
 .main-container {
   overflow: hidden;
 }
@@ -652,6 +729,7 @@ i {
 
 .about {
   position: relative;
+  margin-bottom: 61px;
 }
 .about::before {
   position: absolute;
@@ -785,6 +863,20 @@ i {
   .about__features-text {
     text-align: justify;
   }
+}
+
+.testimonial {
+  padding: 0 20px;
+}
+.testimonial__title {
+  text-align: center;
+}
+.testimonial__slider {
+  padding: 90px 0 0 0;
+  margin-bottom: 43px;
+}
+.testimonial__cta {
+  margin: 0 auto;
 }
 
 /* Base */

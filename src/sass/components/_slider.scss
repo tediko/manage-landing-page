@@ -2,4 +2,84 @@
 
 .slider {
     $root: &;
+    overflow: hidden;
+
+    &__container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__reference {
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        min-width: 100%;
+        background-color: $c-gray-light;
+        text-align: center;
+        padding: 64px 20px 35px 20px;
+
+        &::before {
+            position: absolute;
+            content: '';
+            inset: -32px 0 0 50%;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-size: cover;
+            transform: translateX(-50%);
+        }
+
+        &--anisha {
+            &::before {
+                background-image: url('../../dist/img/avatar-anisha.png');
+            }
+        }
+        &--ali {
+            &::before {
+                background-image: url('../../dist/img/avatar-ali.png');
+            }
+        }
+        &--richard {
+            &::before {
+                background-image: url('../../dist/img/avatar-richard.png');
+            }
+        }
+        &--shanai {
+            &::before {
+                background-image: url('../../dist/img/avatar-shanai.png');
+            }
+        }
+    }
+
+    &__reference-text {
+        margin-top: 18px;
+    }
+
+    &__switch {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        border: none;
+    }
+
+    &__switch-radio {
+        width: 0;
+        height: 0;
+        opacity: 0;
+
+        &:checked + #{$root}__switch-control {
+            background-color: $c-red-bright;
+            border: none;
+        }
+    }
+
+    &__switch-control {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: $c-white;
+        border-radius: 50%;
+        border: 1px solid $c-red-bright;
+        cursor: pointer;
+    }
 }
