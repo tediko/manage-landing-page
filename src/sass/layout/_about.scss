@@ -3,6 +3,7 @@
 .about {
     position: relative;
     $root: &;
+    margin-bottom: 61px;
 
     &::before {
         position: absolute;
