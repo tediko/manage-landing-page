@@ -3,6 +3,12 @@
 .testimonial {
     $root: &;
     padding: 0 20px;
+    margin-bottom: 57px;
+
+    @include breakpoint(md) {
+        padding: 0;
+        margin-bottom: 180px;
+    }
 
     &__title {
         text-align: center;
@@ -11,6 +17,10 @@
     &__slider {
         padding: 90px 0 0 0;
         margin-bottom: 43px;
+
+        @include breakpoint(lg) {
+            padding: 112px 0 8px 0;
+        }
     }
     
     &__cta {
