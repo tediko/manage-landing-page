@@ -292,7 +292,7 @@ i {
 }
 .paragraph--l {
   /* font-size: clamp(0.874rem, 4vw, 1rem); */
-  font-size: 0.89rem;
+  font-size: clamp(0.874rem, 1.4vw, 1rem);
   line-height: 1.95;
 }
 @media (min-width: 768px) {
@@ -550,12 +550,29 @@ i {
   }
 }
 
+body {
+  background-image: url("../../design/mobile-design.jpg");
+  background-size: 375px auto;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
 .slider {
   overflow: hidden;
 }
 .slider__container {
   display: flex;
   align-items: center;
+}
+@media (min-width: 768px) {
+  .slider__container {
+    gap: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .slider__container {
+    gap: 30px;
+  }
 }
 .slider__reference {
   position: relative;
@@ -566,6 +583,17 @@ i {
   text-align: center;
   padding: 64px 20px 35px 20px;
 }
+@media (min-width: 768px) {
+  .slider__reference {
+    min-width: 460px;
+  }
+}
+@media (min-width: 1024px) {
+  .slider__reference {
+    min-width: 540px;
+    padding: 60px 41px 35px 41px;
+  }
+}
 .slider__reference::before {
   position: absolute;
   content: "";
@@ -575,6 +603,11 @@ i {
   border-radius: 50%;
   background-size: cover;
   transform: translateX(-50%);
+}
+@media (min-width: 1024px) {
+  .slider__reference::before {
+    inset: -36px 0 0 50%;
+  }
 }
 .slider__reference--anisha::before {
   background-image: url("../../dist/img/avatar-anisha.png");
@@ -596,6 +629,11 @@ i {
   justify-content: center;
   gap: 5px;
   border: none;
+}
+@media (min-width: 768px) {
+  .slider__switch {
+    display: none;
+  }
 }
 .slider__switch-radio {
   width: 0;
@@ -731,6 +769,11 @@ i {
   position: relative;
   margin-bottom: 61px;
 }
+@media (min-width: 1024px) {
+  .about {
+    margin-bottom: 143px;
+  }
+}
 .about::before {
   position: absolute;
   content: "";
@@ -751,6 +794,14 @@ i {
     bottom: -288px;
     left: -39vw;
     max-width: unset;
+  }
+}
+@media (min-width: 1024px) {
+  .about::before {
+    background-size: 59%;
+    bottom: -557px;
+    left: -38vw;
+    height: 150%;
   }
 }
 @media (min-width: 768px) {
@@ -867,6 +918,13 @@ i {
 
 .testimonial {
   padding: 0 20px;
+  margin-bottom: 57px;
+}
+@media (min-width: 768px) {
+  .testimonial {
+    padding: 0;
+    margin-bottom: 180px;
+  }
 }
 .testimonial__title {
   text-align: center;
@@ -874,6 +932,11 @@ i {
 .testimonial__slider {
   padding: 90px 0 0 0;
   margin-bottom: 43px;
+}
+@media (min-width: 1024px) {
+  .testimonial__slider {
+    padding: 112px 0 8px 0;
+  }
 }
 .testimonial__cta {
   margin: 0 auto;
