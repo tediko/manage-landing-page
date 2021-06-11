@@ -5,6 +5,10 @@
     $root: &;
     margin-bottom: 61px;
 
+    @include breakpoint(lg) {
+        margin-bottom: 143px;
+    }
+
     &::before {
         position: absolute;
         content: "";
@@ -24,6 +28,13 @@
             bottom: -288px;
             left: -39vw;
             max-width: unset;
+        }
+
+        @include breakpoint(lg) {
+            background-size: 59%;
+            bottom: -557px;
+            left: -38vw;
+            height: 150%;
         }
     }
 
