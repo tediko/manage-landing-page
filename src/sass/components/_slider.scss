@@ -1,12 +1,5 @@
 @use '../utilities/' as *;
 
-body {
-    background-image: url('../../design/mobile-design.jpg');
-    background-size: 375px auto;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-}
-
 .slider {
     $root: &;
     overflow: hidden;
