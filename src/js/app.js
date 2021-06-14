@@ -9,44 +9,50 @@ class Slider {
             sliderWrapper: 'data-slider-wrapper',
             slider: 'data-slider',
             slides: 'data-slider-reference',
-            inputs: 'data-slider-input'
+            indicators: 'data-slider-input'
         }
 
         this.sliderWrapper = document.querySelector(`[${this.selectors.sliderWrapper}]`);
         this.slider = document.querySelector(`[${this.selectors.slider}]`);
         this.slides = document.querySelectorAll(`[${this.selectors.slides}]`);
-        this.inputs = document.querySelectorAll(`[${this.selectors.inputs}]`);
+        this.indicators = document.querySelectorAll(`[${this.selectors.indicators}]`);
         
         if (!this.sliderWrapper || !this.slider || !this.slides) return;
         
         this.slidesNumber = this.slides.length;
         this.slideWidth = this.slides[0].clientWidth;
-        this.pageWidth = window.innerWidth;
-        this.lastClonedSlideIndex = this.slidesNumber + 1;
-        this.activeSlideIndex = 2;
+        this.sliderWrapperWidth = this.sliderWrapper.clientWidth;
+        this.lastClonedSlideIndex = this.slidesNumber + 2;
+        this.activeSlideIndex = 3;
         this.index = 1;
         this.previousIndex = 0;
-        this.firstInputIndex = 0;
-        this.lastInputIndex = this.inputs.length - 1;
+        this.firstIndicatorIndex = 0;
+        this.lastIndicatorIndex = this.indicators.length - 1;
         this.isTransitionEnd = true;
         this.isInitialized = false;
+        this.isMobile = true;
         this.transitionDuration = 500;
         this.dragTriggerPoint = 25;
+        this.breakToDesktop = 768;
 
         return true;
     }
 
     setupEvents() {
+        this.isMobile = this.sliderWrapperWidth >= this.breakToDesktop ? false : true;
         this.moveToActiveSlide();
-        this.cloneFirstAndLastSlide();
-        this.setCheckedAttribute(this.activeSlideIndex - 1);
+        this.cloneSlides(2);
+        this.setCheckedAttribute(this.activeSlideIndex - 2);
         this.isInitialized = true;
         
         window.addEventListener('resize', () => {
             this.updateWidthValues();
+            this.isMobile = 
+                this.sliderWrapperWidth >= this.breakToDesktop ?
+                false : true;
         });
 
-        this.inputs.forEach((input, index) => {
+        this.indicators.forEach((input, index) => {
             input.addEventListener('click', () => {
                 if (!this.isTransitionEnd) return;
                 this.index = index;
@@ -86,60 +92,71 @@ class Slider {
     }
 
     removeTransition(direction) {
-        let nextSlideIndex = direction === 'next' ? 1 : this.slidesNumber;
+        let nextSlideIndex = direction === 'next' ? 2 : this.slidesNumber + 1;
+        let mobileSlideValue = -(nextSlideIndex * this.slideWidth);
+        let desktopSlideValue = (this.sliderWrapperWidth / 2 - this.slideWidth / 2) - (nextSlideIndex * (this.slideWidth + 30));
+        let slideValue = this.isMobile ? mobileSlideValue : desktopSlideValue;
         
         window.setTimeout(() => {
-            this.slider.style.transform = `translateX(-${this.slideWidth * nextSlideIndex}px)`;
+            this.slider.style.transform = `translateX(${slideValue}px)`;
             this.slider.style.transition = `none`;
             this.isTransitionEnd = true;
         }, this.transitionDuration)
     }
     
     updateWidthValues() {
-        this.pageWidth = window.innerWidth;
+        this.sliderWrapperWidth = this.sliderWrapper.clientWidth;
         this.slideWidth = this.slides[0].clientWidth;
         this.moveToActiveSlide();
     }
     
     moveToActiveSlide() {
-        this.slideValue = this.activeSlideIndex * this.slideWidth;
-        this.slider.style.transform = `translateX(-${this.slideValue}px)`;
+        let mobileSlideValue = -(this.activeSlideIndex * this.slideWidth);
+        let desktopSlideValue = (this.sliderWrapperWidth / 2 - this.slideWidth / 2) - (this.activeSlideIndex * (this.slideWidth + 30));
+        let slideValue = this.isMobile ? mobileSlideValue : desktopSlideValue;
+        this.slider.style.transform = `translateX(${slideValue}px)`;
         if (!this.isInitialized) return;
         this.slider.style.transition = `transform ${this.transitionDuration}ms ease-in-out`;
     }
     
-    cloneFirstAndLastSlide() {
-        this.firstSlideClone = this.slides[0].cloneNode(true);
-        this.lastSlideClone = this.slides[this.slidesNumber - 1].cloneNode(true);
-        this.slider.append(this.firstSlideClone);
-        this.slider.prepend(this.lastSlideClone);
+    cloneSlides(amount) {
+        let slidesArray = [...this.slides].slice();
+        this.cloneBeginning = slidesArray.slice(0, amount);
+        this.cloneEnd = slidesArray.reverse().slice(0, amount);
+        
+        this.cloneBeginning.forEach(clone => {
+            this.slider.append(clone.cloneNode(true));
+        })
+        this.cloneEnd.forEach(clone => {
+            this.slider.prepend(clone.cloneNode(true));
+        })
     }
     
     setActiveSlideIndex(index) {        
-        if (index === this.firstInputIndex && this.previousIndex === this.lastInputIndex) {
+        if (index === this.firstIndicatorIndex && this.previousIndex === this.lastIndicatorIndex) {
             this.activeSlideIndex = this.lastClonedSlideIndex;
             this.isTransitionEnd = false;
             this.removeTransition('next');
-        } else if (index === this.lastInputIndex && this.previousIndex === this.firstInputIndex) {
-            this.activeSlideIndex = 0;
+        } else if (index === this.lastIndicatorIndex && this.previousIndex === this.firstIndicatorIndex) {
+            this.activeSlideIndex = 1;
             this.isTransitionEnd = false;
             this.removeTransition('prev');
         } else {
-            this.activeSlideIndex = index + 1;
+            this.activeSlideIndex = index + 2;
         }
     }
     
     setCheckedAttribute(index) {
-        this.inputs[index].checked = true;
+        this.indicators[index].checked = true;
     }
 
     changeSlide() {
         this.isTransitionEnd = false;
 
-        if (this.index > this.lastInputIndex) {
-            this.index = this.firstInputIndex;
-        } else if (this.index < this.firstInputIndex) {
-            this.index = this.lastInputIndex;
+        if (this.index > this.lastIndicatorIndex) {
+            this.index = this.firstIndicatorIndex;
+        } else if (this.index < this.firstIndicatorIndex) {
+            this.index = this.lastIndicatorIndex;
         }
 
         this.setActiveSlideIndex(this.index);
