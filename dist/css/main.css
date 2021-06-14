@@ -559,11 +559,6 @@ i {
 }
 @media (min-width: 768px) {
   .slider__container {
-    gap: 20px;
-  }
-}
-@media (min-width: 1024px) {
-  .slider__container {
     gap: 30px;
   }
 }

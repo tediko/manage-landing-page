@@ -9,10 +9,6 @@
         align-items: center;
         
         @include breakpoint(md) {
-            gap: 20px;
-        }
-
-        @include breakpoint(lg) {
             gap: 30px;
         }
     }
