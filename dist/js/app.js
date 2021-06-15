@@ -47,20 +47,30 @@ var Slider = /*#__PURE__*/function () {
       this.slides = document.querySelectorAll("[".concat(this.selectors.slides, "]"));
       this.indicators = document.querySelectorAll("[".concat(this.selectors.indicators, "]"));
       if (!this.sliderWrapper || !this.slider || !this.slides) return;
-      this.slidesNumber = this.slides.length;
+      this.slidesNumberAfterClone;
+      this.lastTrueElement;
+      /* Last slide that isn't clone*/
+
       this.slideWidth = this.slides[0].clientWidth;
       this.sliderWrapperWidth = this.sliderWrapper.clientWidth;
-      this.lastClonedSlideIndex = this.slidesNumber + 2;
+      this.numOfElementsToClone = 2;
+      /* Number of elements to clone */
+
       this.activeSlideIndex = 3;
-      this.index = 1;
+      /* Which slide to show first */
+
+      this.index = this.activeSlideIndex - this.numOfElementsToClone;
       this.previousIndex = 0;
       this.firstIndicatorIndex = 0;
       this.lastIndicatorIndex = this.indicators.length - 1;
+      /* Helpers */
+
       this.isTransitionEnd = true;
       this.isInitialized = false;
       this.isMobile = true;
-      this.transitionDuration = 500;
-      this.dragTriggerPoint = 25;
+      this.isMousePressed = false;
+      this.transitionDuration = 700;
+      this.dragTriggerPoint = 35;
       this.breakToDesktop = 768;
       return true;
     }
@@ -71,14 +81,16 @@ var Slider = /*#__PURE__*/function () {
 
       this.isMobile = this.sliderWrapperWidth >= this.breakToDesktop ? false : true;
       this.moveToActiveSlide();
-      this.cloneSlides(2);
-      this.setCheckedAttribute(this.activeSlideIndex - 2);
-      this.isInitialized = true;
+      this.cloneSlides(this.numOfElementsToClone);
+      this.setCheckedAttribute(this.index);
+      this.isInitialized = true; // Look for window resize
+
       window.addEventListener('resize', function () {
         _this.updateWidthValues();
 
         _this.isMobile = _this.sliderWrapperWidth >= _this.breakToDesktop ? false : true;
-      });
+      }); // Indicators listener
+
       this.indicators.forEach(function (input, index) {
         input.addEventListener('click', function () {
           if (!_this.isTransitionEnd) return;
@@ -92,7 +104,8 @@ var Slider = /*#__PURE__*/function () {
 
           _this.previousIndex = _this.index;
         });
-      });
+      }); // Mobile dragging events
+
       this.sliderWrapper.addEventListener('touchstart', function (event) {
         _this.touchStartX = Math.floor(event.touches[0].clientX);
         _this.touchEndX = 0;
@@ -105,25 +118,41 @@ var Slider = /*#__PURE__*/function () {
       this.sliderWrapper.addEventListener('touchend', function () {
         if (!_this.isTransitionEnd) return;
 
-        if (_this.touchShiftValue > _this.dragTriggerPoint) {
-          _this.index++;
+        _this.handleDrag();
+      }); // Desktop dragging events
 
-          _this.changeSlide();
-        } else if (_this.touchShiftValue < -_this.dragTriggerPoint) {
-          _this.index--;
+      this.sliderWrapper.addEventListener('mousedown', function (event) {
+        event.preventDefault();
+        _this.isMousePressed = true;
+        _this.slider.style.cursor = 'grabbing';
+        _this.touchStartX = event.clientX;
+        _this.touchEndX = 0;
+        _this.touchShiftValue = 0;
+      });
+      this.sliderWrapper.addEventListener('mousemove', function (event) {
+        if (!_this.isMousePressed) return;
+        _this.touchEndX = event.clientX;
+        _this.touchShiftValue = _this.touchStartX - _this.touchEndX;
+      });
+      this.sliderWrapper.addEventListener('mouseup', function () {
+        if (!_this.isTransitionEnd) return;
+        _this.isMousePressed = false;
+        _this.slider.style.cursor = 'grab';
 
-          _this.changeSlide();
-        } else {
-          return;
-        }
+        _this.handleDrag();
       });
     }
+    /**
+    * Function to remove transition effect when the carousel loops.
+    * @param    {String} direction    String with direction of next slide
+    */
+
   }, {
     key: "removeTransition",
     value: function removeTransition(direction) {
       var _this2 = this;
 
-      var nextSlideIndex = direction === 'next' ? 2 : this.slidesNumber + 1;
+      var nextSlideIndex = direction === 'next' ? this.numOfElementsToClone : this.lastTrueElement;
       var mobileSlideValue = -(nextSlideIndex * this.slideWidth);
       var desktopSlideValue = this.sliderWrapperWidth / 2 - this.slideWidth / 2 - nextSlideIndex * (this.slideWidth + 30);
       var slideValue = this.isMobile ? mobileSlideValue : desktopSlideValue;
@@ -133,6 +162,10 @@ var Slider = /*#__PURE__*/function () {
         _this2.isTransitionEnd = true;
       }, this.transitionDuration);
     }
+    /**
+    * Function that update width values
+    */
+
   }, {
     key: "updateWidthValues",
     value: function updateWidthValues() {
@@ -140,6 +173,10 @@ var Slider = /*#__PURE__*/function () {
       this.slideWidth = this.slides[0].clientWidth;
       this.moveToActiveSlide();
     }
+    /**
+    * Function that move/transform our container so it show current slide
+    */
+
   }, {
     key: "moveToActiveSlide",
     value: function moveToActiveSlide() {
@@ -150,6 +187,11 @@ var Slider = /*#__PURE__*/function () {
       if (!this.isInitialized) return;
       this.slider.style.transition = "transform ".concat(this.transitionDuration, "ms ease-in-out");
     }
+    /**
+    * Function that clone given number of slides at the beginning and at the end.
+    * @param    {Number} amount    Amount of slides to clone
+    */
+
   }, {
     key: "cloneSlides",
     value: function cloneSlides(amount) {
@@ -165,12 +207,20 @@ var Slider = /*#__PURE__*/function () {
       this.cloneEnd.forEach(function (clone) {
         _this3.slider.prepend(clone.cloneNode(true));
       });
+      this.slidesNumberAfterClone = document.querySelectorAll('[data-slider-reference]').length - 1;
+      this.lastTrueElement = this.slidesNumberAfterClone - this.numOfElementsToClone;
     }
+    /**
+    * Function that check if our slider is on first/last slide
+    * and assign new activeSlideIndex value.  
+    * @param    {Number} index    Value of new indicator index
+    */
+
   }, {
     key: "setActiveSlideIndex",
     value: function setActiveSlideIndex(index) {
       if (index === this.firstIndicatorIndex && this.previousIndex === this.lastIndicatorIndex) {
-        this.activeSlideIndex = this.lastClonedSlideIndex;
+        this.activeSlideIndex = this.slidesNumberAfterClone - 1;
         this.isTransitionEnd = false;
         this.removeTransition('next');
       } else if (index === this.lastIndicatorIndex && this.previousIndex === this.firstIndicatorIndex) {
@@ -181,11 +231,20 @@ var Slider = /*#__PURE__*/function () {
         this.activeSlideIndex = index + 2;
       }
     }
+    /**
+    * Function that set attribute 'checked' to given input
+    * @param    {Number} index    Value of new indicator index
+    */
+
   }, {
     key: "setCheckedAttribute",
     value: function setCheckedAttribute(index) {
       this.indicators[index].checked = true;
     }
+    /**
+    * Function that change current slide, active indicators
+    */
+
   }, {
     key: "changeSlide",
     value: function changeSlide() {
@@ -206,6 +265,24 @@ var Slider = /*#__PURE__*/function () {
       window.setTimeout(function () {
         _this4.isTransitionEnd = true;
       }, this.transitionDuration);
+    }
+    /**
+    * Function that check direction of dragging move
+    * and chooses which direction our slider slides. 
+    */
+
+  }, {
+    key: "handleDrag",
+    value: function handleDrag() {
+      if (this.touchShiftValue > this.dragTriggerPoint) {
+        this.index++;
+        this.changeSlide();
+      } else if (this.touchShiftValue < -this.dragTriggerPoint) {
+        this.index--;
+        this.changeSlide();
+      } else {
+        return;
+      }
     }
   }]);
 
