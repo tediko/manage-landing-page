@@ -245,23 +245,23 @@ i {
 }
 
 /* Headings */
-.heading, .heading--l, .heading--xl, .heading--xxl {
+.heading, .heading--l, .heading--xl, .heading--xxxl {
   font-weight: 700;
   color: #242d52;
   line-height: 1.5;
 }
-.heading--xxl {
+.heading--xxxl {
   font-size: 2.2rem;
   line-height: 1.26;
   letter-spacing: -0.0625rem;
 }
 @media (min-width: 374px) {
-  .heading--xxl {
+  .heading--xxxl {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
   }
 }
 @media (min-width: 1024px) {
-  .heading--xxl {
+  .heading--xxxl {
     line-height: 1.14;
   }
 }
