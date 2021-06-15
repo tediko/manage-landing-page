@@ -560,6 +560,8 @@ i {
 @media (min-width: 768px) {
   .slider__container {
     gap: 30px;
+    cursor: -webkit-grab;
+    cursor: grab;
   }
 }
 .slider__reference {
