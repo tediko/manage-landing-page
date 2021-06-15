@@ -16,11 +16,15 @@
         width: 100%;
         height: 100%;
 
-        @include breakpoint(md) {
-            inset: -130px 0px 0px 230px;
+        @include breakpoint(lg) {
+            inset: 0vw 0px 0px 230px;
             background-image: url("../img/bg-simplify-section-desktop.svg");
             background-size: 104%;
             height: 1000px;
+        }
+
+        @media (min-width: 1300px) {
+            inset: -130px 0 0 230px;
         }
     }
 
