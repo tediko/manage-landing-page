@@ -270,6 +270,11 @@ i {
   letter-spacing: -0.023em;
   line-height: 1.25;
 }
+@media (min-width: 768px) {
+  .heading--xxl {
+    line-height: 1.18;
+  }
+}
 .heading--xl {
   font-size: clamp(1.8rem, 4vw, 2.45rem);
 }
@@ -941,13 +946,6 @@ i {
   margin: 0 auto;
 }
 
-body {
-  background-image: url("../../design/desktop-design.jpg");
-  background-size: 1440px auto;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-}
-
 .start {
   position: relative;
   background-color: #f25f3a;
@@ -963,14 +961,45 @@ body {
   width: 100%;
   height: 100%;
 }
+@media (min-width: 768px) {
+  .start::before {
+    inset: -130px 0px 0px 230px;
+    background-image: url("../img/bg-simplify-section-desktop.svg");
+    background-size: 104%;
+    height: 1000px;
+  }
+}
+@media (min-width: 1024px) {
+  .start {
+    padding: 63px 24px;
+  }
+}
 .start__container {
+  position: relative;
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .start__container {
+    flex-flow: row;
+    align-items: unset;
+    text-align: left;
+    justify-content: space-between;
+  }
+}
+.start__title {
+  max-width: 450px;
 }
 .start__cta {
   margin-top: 29px;
+}
+@media (min-width: 1024px) {
+  .start__cta {
+    margin-top: 26px;
+  }
 }
 
 /* Base */
