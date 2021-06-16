@@ -16,6 +16,26 @@
         padding: 55px 24px 0 24px;
     }
 
+    &.header-scroll-in {
+        position: fixed;
+        background-color: $c-white;
+        padding-top: 0;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.04);
+        animation: scroll-in 300ms ease-in-out forwards;
+
+        @include breakpoint('md') {
+            padding-top: 12px;
+        }
+
+        @include breakpoint('lg') {
+            padding-top: 12px;
+        }
+    }
+
+    &.header-scroll-out {
+        animation: scroll-out 300ms ease-in-out forwards;
+    }
+
     &__container {
         display: flex;
         justify-content: space-between;
