@@ -10,7 +10,7 @@
 /* Skip to content link */
 .skip-to-content-link {
     position: fixed;
-    top: 115px;
+    top: 110px;
     left: 0;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     padding: 20px 40px;
@@ -22,6 +22,7 @@
     transition: transform 300ms ease;
 
     &:focus {
+        outline: 3px dashed $c-blue-dark-very;
         outline-offset: 0;
         transform: translateX(0);
     }
@@ -45,11 +46,22 @@
     background: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.4));
     opacity: 0;
     transition: opacity 350ms ease-in-out;
+    z-index: 998;
 
     &.active {
         visibility: visible;
         opacity: 1;
     }
+
+    &.disabled {
+        visibility: visible;
+        opacity: 0;
+    }
+}
+
+/* Overflow hidden */
+.overflow {
+    overflow: hidden;
 }
 
 /* Headings */
