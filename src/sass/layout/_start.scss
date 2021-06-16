@@ -5,6 +5,7 @@
     position: relative;
     background-color: $c-red-bright;
     padding: 91px 24px;
+    overflow: hidden;
 
     &::before {
         position: absolute;
