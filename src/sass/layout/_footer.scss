@@ -56,6 +56,18 @@
     }
 
     &__socials-link {
+        @include breakpoint(md) {
+            i::before {
+                transition: color 350ms ease-in;
+            }
+            
+            &:hover {
+                i::before {
+                    color: $c-red-bright;
+                }
+            }
+        }
+
         @include breakpoint(lg) {
             line-height: 1;
         }
@@ -83,6 +95,14 @@
     &__nav-item {
         color: $c-white;
         font-size: 0.9rem;
+        
+        @include breakpoint(md) {
+            transition: color 350ms ease-in;
+
+            &:hover {
+                color: $c-red-bright;
+            }
+        }
     }
 
     &__form {
