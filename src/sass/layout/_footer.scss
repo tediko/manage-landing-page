@@ -107,6 +107,7 @@
 
     &__form {
         grid-area: form;
+        position: relative;
         display: flex;
         gap: 10px;
         width: 100%;
@@ -116,6 +117,17 @@
             justify-self: end;
             width: unset;
         }
+
+        &.invalid {
+            #{$root}__form-input {
+                color: darken($c-red-bright, 20);
+            }
+            #{$root}__form-warning {
+                visibility: visible;
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     }
 
     &__form-input {
@@ -123,6 +135,7 @@
         border-radius: 24px;
         border: none;
         width: 100%;
+        transition: color 350ms ease-in;
 
         &::placeholder {
             font-family: $ff-primary;
@@ -143,6 +156,19 @@
         @include breakpoint(lg) {
             padding: 15px 30px 15px 25px;
         }
+    }
+
+    &__form-warning {
+        visibility: none;
+        position: absolute;
+        top: 50px;
+        left: 5px;
+        color: #f25f3a;
+        font-size: 0.75rem;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 350ms ease-in-out,
+                    transform 350ms ease-in;
     }
 
     &__copy {

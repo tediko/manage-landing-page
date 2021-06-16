@@ -1237,6 +1237,7 @@ i {
 }
 .footer__form {
   grid-area: form;
+  position: relative;
   display: flex;
   gap: 10px;
   width: 100%;
@@ -1248,11 +1249,20 @@ i {
     width: unset;
   }
 }
+.footer__form.invalid .footer__form-input {
+  color: #bb2f0c;
+}
+.footer__form.invalid .footer__form-warning {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
 .footer__form-input {
   padding: 15px 15px 15px 25px;
   border-radius: 24px;
   border: none;
   width: 100%;
+  transition: color 350ms ease-in;
 }
 .footer__form-input::-moz-placeholder {
   font-family: "Be Vietnam", sans-serif;
@@ -1279,6 +1289,17 @@ i {
   .footer__form-input {
     padding: 15px 30px 15px 25px;
   }
+}
+.footer__form-warning {
+  visibility: none;
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  color: #f25f3a;
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 350ms ease-in-out, transform 350ms ease-in;
 }
 .footer__copy {
   grid-area: copy;
