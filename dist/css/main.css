@@ -1266,6 +1266,15 @@ i {
   font-family: "Be Vietnam", sans-serif;
   font-size: 0.8rem;
 }
+.footer__form-input:focus {
+  border: none;
+  outline: none;
+}
+.footer__form-input:focus-visible {
+  border: none;
+  outline: 2px dashed #f25f3a;
+  outline-offset: 2px;
+}
 @media (min-width: 1024px) {
   .footer__form-input {
     padding: 15px 30px 15px 25px;

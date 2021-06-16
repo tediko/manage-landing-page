@@ -129,6 +129,17 @@
             font-size: 0.8rem;
         }
 
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        &:focus-visible {
+            border: none;
+            outline: 2px dashed $c-red-bright;
+            outline-offset: 2px;
+        }
+
         @include breakpoint(lg) {
             padding: 15px 30px 15px 25px;
         }
