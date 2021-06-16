@@ -12,12 +12,33 @@
     cursor: pointer;
     transition: background-color 300ms ease-in,
                 border 300ms ease-in;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:focus-visible {
+        outline: 2px dashed $c-red-bright;
+        outline-offset: 2px;
+    }
     
     &--start {
         @extend #{$root};
         width: 137px;
         height: 44px;
         font-size: 0.825rem;
+    }
+
+    &--go {
+        @extend #{$root};
+        padding: 13px 29px;
+        border-radius: 24px;
+        text-transform: uppercase;
+
+        @include breakpoint(lg) {
+            text-transform: capitalize;
+            padding: 13px 23px;
+        }
     }
     
     &--red {
@@ -36,5 +57,14 @@
         background-color: $c-white;
         border: 2px solid darken($c-red-bright, 10);
         color: $c-red-bright;
+        transition: color 300ms ease-in;
+
+        &:focus-visible {
+            outline-color: $c-blue-dark-very;
+        }
+
+        &:hover {
+            color: lighten($c-red-bright, 10);
+        }
     }
 }
