@@ -45,7 +45,7 @@
         display: flex;
         gap: 33px;
         margin-top: 44px;
-        font-size: 1.91rem;
+        font-size: clamp(1.4rem, 8vw, 1.91rem);
 
         @include breakpoint(lg) {   
             margin-top: 0;
@@ -60,7 +60,7 @@
             i::before {
                 transition: color 350ms ease-in;
             }
-            
+
             &:hover {
                 i::before {
                     color: $c-red-bright;
@@ -76,8 +76,8 @@
     &__nav {
         grid-area: nav;
         display: flex;
-        gap: 107px;
-        margin: 53px 0 0 79px;
+        justify-content: space-around;
+        margin: 53px 0 0 0;
         width: 100%;
 
         @include breakpoint(lg) {   

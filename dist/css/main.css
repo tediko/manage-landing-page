@@ -1182,7 +1182,7 @@ i {
   display: flex;
   gap: 33px;
   margin-top: 44px;
-  font-size: 1.91rem;
+  font-size: clamp(1.4rem, 8vw, 1.91rem);
 }
 @media (min-width: 1024px) {
   .footer__socials {
@@ -1208,8 +1208,8 @@ i {
 .footer__nav {
   grid-area: nav;
   display: flex;
-  gap: 107px;
-  margin: 53px 0 0 79px;
+  justify-content: space-around;
+  margin: 53px 0 0 0;
   width: 100%;
 }
 @media (min-width: 1024px) {
