@@ -2,6 +2,28 @@
 @use '../utilities/mixins' as *;
 
 /* Header */
+@keyframes scroll-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-64px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scroll-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-64px);
+    }
+}
+
 @keyframes navOpen {
     0% {
         opacity: 0;
