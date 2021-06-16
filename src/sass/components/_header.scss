@@ -6,6 +6,7 @@
     left: 0;
     width: 100%;
     padding: 24px 24px 0 24px;
+    z-index: 999;
 
     @include breakpoint(md) {
         padding: 35px 24px 0 24px;

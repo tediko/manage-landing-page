@@ -264,6 +264,7 @@ i {
   background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.4));
   opacity: 0;
   transition: opacity 350ms ease-in-out;
+  z-index: 998;
 }
 .menu-overlay.active {
   visibility: visible;
@@ -350,6 +351,13 @@ i {
   cursor: pointer;
   transition: background-color 300ms ease-in, border 300ms ease-in;
 }
+.btn:focus, .btn--go:focus, .btn--start:focus {
+  outline: none;
+}
+.btn:focus-visible, .btn--go:focus-visible, .btn--start:focus-visible {
+  outline: 2px dashed #f25f3a;
+  outline-offset: 2px;
+}
 .btn--start {
   width: 137px;
   height: 44px;
@@ -381,12 +389,16 @@ i {
   border: 2px solid #eb3b0f;
   color: #f25f3a;
 }
+.btn--white:focus-visible {
+  outline-color: #1d1e25;
+}
 
 .header {
   position: absolute;
   left: 0;
   width: 100%;
   padding: 24px 24px 0 24px;
+  z-index: 999;
 }
 @media (min-width: 768px) {
   .header {
