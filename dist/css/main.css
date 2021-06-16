@@ -1053,6 +1053,7 @@ i {
   display: grid;
   grid-template-areas: "form" "nav" "socials" "logo" "copy";
   justify-items: center;
+  max-width: 375px;
 }
 @media (min-width: 1024px) {
   .footer__container {
@@ -1061,6 +1062,7 @@ i {
     -moz-column-gap: 101px;
          column-gap: 101px;
     padding-left: 5px;
+    max-width: 1110px;
   }
 }
 .footer__logo {
@@ -1070,6 +1072,7 @@ i {
 @media (min-width: 1024px) {
   .footer__logo {
     margin-top: 0;
+    align-self: start;
   }
 }
 .footer__logo-img {
