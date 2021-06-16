@@ -2,4 +2,75 @@
 
 .footer {
     $root: &;
+    background-color: $c-blue-dark-very;
+    padding: 50px 24px 31px 24px;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: "form" "nav" "socials" "logo" "copy";
+        justify-items: center;
+    }
+
+    &__logo {
+        grid-area: logo;
+        margin-top: 48px;
+    }
+
+    &__logo-img {
+        width: 157px;
+    }
+
+    &__socials {
+        grid-area: socials;
+        display: flex;
+        gap: 33px;
+        margin-top: 44px;
+        font-size: 1.91rem;
+    }
+
+    &__nav {
+        grid-area: nav;
+        display: flex;
+        gap: 107px;
+        margin: 53px 0 0 79px;
+        width: 100%;
+    }
+
+    &__nav-list {
+        display: flex;
+        flex-flow: column;
+        gap: 14px;
+    }
+
+    &__nav-item {
+        color: $c-white;
+        font-size: 0.9rem;
+    }
+
+    &__form {
+        grid-area: form;
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    &__form-input {
+        padding: 15px 15px 15px 25px;
+        border-radius: 24px;
+        border: none;
+        width: 100%;
+
+        &::placeholder {
+            font-family: $ff-primary;
+            font-size: 0.8rem;
+        }
+    }
+
+    &__copy {
+        grid-area: copy;
+        margin-top: 46px;
+        font-size: 0.8rem;
+        color: $c-blue-dark-grayish;
+    }
 }
