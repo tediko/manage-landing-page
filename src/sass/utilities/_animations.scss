@@ -2,6 +2,18 @@
 @use '../utilities/mixins' as *;
 
 /* Header */
+@keyframes init-header-slide {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
 @keyframes scroll-in {
     0% {
         opacity: 0;
@@ -81,5 +93,49 @@
     }
     100% {
       mask-position: -50%;
+    }
+}
+
+/* Key Visual */
+@keyframes init-intro-slide {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes init-illustration-rotate {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(5deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Global */
+@keyframes slide-bottom{
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes opacity{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
