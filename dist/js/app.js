@@ -11,10 +11,13 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
 /* harmony import */ var _toggleMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toggleMenu */ "./src/js/toggleMenu.js");
+/* harmony import */ var _stickyHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stickyHeader */ "./src/js/stickyHeader.js");
+
 
 
 var slider = new _slider__WEBPACK_IMPORTED_MODULE_0__.default();
 var menu = new _toggleMenu__WEBPACK_IMPORTED_MODULE_1__.default();
+var header = new _stickyHeader__WEBPACK_IMPORTED_MODULE_2__.default();
 
 /***/ }),
 
@@ -308,6 +311,97 @@ var Slider = /*#__PURE__*/function () {
   }]);
 
   return Slider;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/stickyHeader.js":
+/*!********************************!*\
+  !*** ./src/js/stickyHeader.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ StickyHeader)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var StickyHeader = /*#__PURE__*/function () {
+  function StickyHeader() {
+    _classCallCheck(this, StickyHeader);
+
+    if (!this.vars()) return;
+    this.setupEvents();
+  }
+
+  _createClass(StickyHeader, [{
+    key: "vars",
+    value: function vars() {
+      this.selectors = {
+        header: 'data-header',
+        kvSection: 'data-kv',
+        scrollInClass: 'header-scroll-in',
+        scrollOutClass: 'header-scroll-out'
+      };
+      this.header = document.querySelector("[".concat(this.selectors.header, "]"));
+      this.kvSection = document.querySelector("[".concat(this.selectors.kvSection, "]"));
+      if (!this.header || !this.kvSection) return;
+      this.timer;
+      this.isInitialized = false;
+      this.transitionDuration = 300;
+      return true;
+    }
+  }, {
+    key: "setupEvents",
+    value: function setupEvents() {
+      this.navObserver(this.kvSection);
+    }
+    /**
+    * Function to start observe element and show/hide header.
+    * @param    {Element} element    Element to observe
+    */
+
+  }, {
+    key: "navObserver",
+    value: function navObserver(element) {
+      var _this = this;
+
+      this.options = {
+        threshold: 0.2
+      };
+      this.observer = new IntersectionObserver(function (entries, observer) {
+        if (_this.isInitialized) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) {
+              _this.header.classList.add("".concat(_this.selectors.scrollInClass));
+            } else {
+              _this.header.classList.add("".concat(_this.selectors.scrollOutClass));
+
+              _this.timer = setTimeout(function () {
+                _this.header.classList.remove("".concat(_this.selectors.scrollInClass));
+
+                _this.header.classList.remove("".concat(_this.selectors.scrollOutClass));
+
+                _this.timer = false;
+              }, _this.transitionDuration);
+            }
+          });
+        }
+
+        _this.isInitialized = true;
+      }, this.options);
+      this.observer.observe(element);
+    }
+  }]);
+
+  return StickyHeader;
 }();
 
 
