@@ -644,6 +644,12 @@ i {
   background-color: #fafafa;
   text-align: center;
   padding: 64px 20px 35px 20px;
+  min-height: 280px;
+}
+@media (min-width: 480px) {
+  .slider__reference {
+    min-height: unset;
+  }
 }
 @media (min-width: 768px) {
   .slider__reference {
