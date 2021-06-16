@@ -3,22 +3,38 @@
 .footer {
     $root: &;
     background-color: $c-blue-dark-very;
-    padding: 50px 24px 31px 24px;
+    padding: 63px 24px 31px 24px;
 
     &__container {
         display: grid;
-        grid-template-columns: 1fr;
         grid-template-areas: "form" "nav" "socials" "logo" "copy";
         justify-items: center;
+
+        @include breakpoint(lg) {
+            grid-template-areas: 
+                "logo nav nav form"
+                "socials nav nav copy";
+            justify-items: unset;
+            column-gap: 101px;
+            padding-left: 5px;
+        }
     }
 
     &__logo {
         grid-area: logo;
         margin-top: 48px;
+
+        @include breakpoint(lg) {
+            margin-top: 0;
+        }
     }
 
     &__logo-img {
         width: 157px;
+
+        @include breakpoint(lg) {
+            width: 147px;
+        }
     }
 
     &__socials {
@@ -27,6 +43,19 @@
         gap: 33px;
         margin-top: 44px;
         font-size: 1.91rem;
+
+        @include breakpoint(lg) {   
+            margin-top: 0;
+            align-self: end;
+            gap: 13px;
+            font-size: 1.22rem;
+        }
+    }
+
+    &__socials-link {
+        @include breakpoint(lg) {
+            line-height: 1;
+        }
     }
 
     &__nav {
@@ -35,6 +64,11 @@
         gap: 107px;
         margin: 53px 0 0 79px;
         width: 100%;
+
+        @include breakpoint(lg) {   
+            margin: 0;
+            gap: 224px;
+        }
     }
 
     &__nav-list {
@@ -53,6 +87,12 @@
         display: flex;
         gap: 10px;
         width: 100%;
+
+        @include breakpoint(lg) {
+            align-self: start;
+            justify-self: end;
+            width: unset;
+        }
     }
 
     &__form-input {
@@ -65,12 +105,22 @@
             font-family: $ff-primary;
             font-size: 0.8rem;
         }
+
+        @include breakpoint(lg) {
+            padding: 15px 30px 15px 25px;
+        }
     }
 
     &__copy {
         grid-area: copy;
         margin-top: 46px;
-        font-size: 0.8rem;
+        font-size: 0.79rem;
         color: $c-blue-dark-grayish;
+
+        @include breakpoint(lg) {   
+            margin-top: 0;
+            align-self: end;
+            justify-self: end;
+        }
     }
 }

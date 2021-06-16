@@ -334,6 +334,12 @@ i {
   border-radius: 24px;
   text-transform: uppercase;
 }
+@media (min-width: 1024px) {
+  .btn--go {
+    text-transform: capitalize;
+    padding: 13px 23px;
+  }
+}
 .btn--red {
   background-color: #f25f3a;
   border: 2px solid #e1390e;
@@ -955,6 +961,7 @@ i {
   position: relative;
   background-color: #f25f3a;
   padding: 91px 24px;
+  overflow: hidden;
 }
 .start::before {
   position: absolute;
@@ -1014,20 +1021,38 @@ i {
 
 .footer {
   background-color: #1d1e25;
-  padding: 50px 24px 31px 24px;
+  padding: 63px 24px 31px 24px;
 }
 .footer__container {
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-areas: "form" "nav" "socials" "logo" "copy";
   justify-items: center;
+}
+@media (min-width: 1024px) {
+  .footer__container {
+    grid-template-areas: "logo nav nav form" "socials nav nav copy";
+    justify-items: unset;
+    -moz-column-gap: 101px;
+         column-gap: 101px;
+    padding-left: 5px;
+  }
 }
 .footer__logo {
   grid-area: logo;
   margin-top: 48px;
 }
+@media (min-width: 1024px) {
+  .footer__logo {
+    margin-top: 0;
+  }
+}
 .footer__logo-img {
   width: 157px;
+}
+@media (min-width: 1024px) {
+  .footer__logo-img {
+    width: 147px;
+  }
 }
 .footer__socials {
   grid-area: socials;
@@ -1036,12 +1061,31 @@ i {
   margin-top: 44px;
   font-size: 1.91rem;
 }
+@media (min-width: 1024px) {
+  .footer__socials {
+    margin-top: 0;
+    align-self: end;
+    gap: 13px;
+    font-size: 1.22rem;
+  }
+}
+@media (min-width: 1024px) {
+  .footer__socials-link {
+    line-height: 1;
+  }
+}
 .footer__nav {
   grid-area: nav;
   display: flex;
   gap: 107px;
   margin: 53px 0 0 79px;
   width: 100%;
+}
+@media (min-width: 1024px) {
+  .footer__nav {
+    margin: 0;
+    gap: 224px;
+  }
 }
 .footer__nav-list {
   display: flex;
@@ -1057,6 +1101,13 @@ i {
   display: flex;
   gap: 10px;
   width: 100%;
+}
+@media (min-width: 1024px) {
+  .footer__form {
+    align-self: start;
+    justify-self: end;
+    width: unset;
+  }
 }
 .footer__form-input {
   padding: 15px 15px 15px 25px;
@@ -1076,11 +1127,23 @@ i {
   font-family: "Be Vietnam", sans-serif;
   font-size: 0.8rem;
 }
+@media (min-width: 1024px) {
+  .footer__form-input {
+    padding: 15px 30px 15px 25px;
+  }
+}
 .footer__copy {
   grid-area: copy;
   margin-top: 46px;
-  font-size: 0.8rem;
+  font-size: 0.79rem;
   color: #9095a7;
+}
+@media (min-width: 1024px) {
+  .footer__copy {
+    margin-top: 0;
+    align-self: end;
+    justify-self: end;
+  }
 }
 
 /* Base */
