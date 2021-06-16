@@ -12,12 +12,96 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
 /* harmony import */ var _toggleMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toggleMenu */ "./src/js/toggleMenu.js");
 /* harmony import */ var _stickyHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stickyHeader */ "./src/js/stickyHeader.js");
+/* harmony import */ var _formValidation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./formValidation */ "./src/js/formValidation.js");
+
 
 
 
 var slider = new _slider__WEBPACK_IMPORTED_MODULE_0__.default();
 var menu = new _toggleMenu__WEBPACK_IMPORTED_MODULE_1__.default();
 var header = new _stickyHeader__WEBPACK_IMPORTED_MODULE_2__.default();
+var form = new _formValidation__WEBPACK_IMPORTED_MODULE_3__.default();
+
+/***/ }),
+
+/***/ "./src/js/formValidation.js":
+/*!**********************************!*\
+  !*** ./src/js/formValidation.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ FormValidation)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var FormValidation = /*#__PURE__*/function () {
+  function FormValidation() {
+    _classCallCheck(this, FormValidation);
+
+    if (!this.vars()) return false;
+    this.setupEvents();
+  }
+
+  _createClass(FormValidation, [{
+    key: "vars",
+    value: function vars() {
+      this.selectors = {
+        form: 'data-form',
+        input: 'data-input',
+        submitButton: 'data-submit',
+        invalidClass: 'invalid'
+      };
+      this.form = document.querySelector("[".concat(this.selectors.form, "]"));
+      this.input = document.querySelector("[".concat(this.selectors.input, "]"));
+      this.submitButton = document.querySelector("[".concat(this.selectors.submitButton, "]"));
+      if (!this.form || !this.input || !this.submitButton) return false;
+      this.regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return true;
+    }
+  }, {
+    key: "setupEvents",
+    value: function setupEvents() {
+      var _this = this;
+
+      this.form.addEventListener('submit', function (event) {
+        return _this.formValidation(event);
+      });
+    }
+    /**
+    * Function to display error or submit form
+    * @param    {Event} event    Event from eventlistener
+    */
+
+  }, {
+    key: "formValidation",
+    value: function formValidation(event) {
+      event.preventDefault();
+      this.inputValue = this.input.value;
+      this.emailValidation(this.inputValue) ? this.form.submit() : this.form.classList.add("".concat(this.selectors.invalidClass));
+    }
+    /**
+    * Function that check if our email is correct
+    * @param    {String} email    String with email address
+    * @return   {Boolean}         Returns true or false
+    */
+
+  }, {
+    key: "emailValidation",
+    value: function emailValidation(email) {
+      return this.regex.test(email);
+    }
+  }]);
+
+  return FormValidation;
+}();
+
+
 
 /***/ }),
 
