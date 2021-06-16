@@ -10,8 +10,11 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
+/* harmony import */ var _toggleMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toggleMenu */ "./src/js/toggleMenu.js");
+
 
 var slider = new _slider__WEBPACK_IMPORTED_MODULE_0__.default();
+var menu = new _toggleMenu__WEBPACK_IMPORTED_MODULE_1__.default();
 
 /***/ }),
 
@@ -305,6 +308,207 @@ var Slider = /*#__PURE__*/function () {
   }]);
 
   return Slider;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/toggleMenu.js":
+/*!******************************!*\
+  !*** ./src/js/toggleMenu.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ToggleMenu)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ToggleMenu = /*#__PURE__*/function () {
+  function ToggleMenu() {
+    _classCallCheck(this, ToggleMenu);
+
+    if (!this.vars()) return;
+    this.setupEvents();
+  }
+
+  _createClass(ToggleMenu, [{
+    key: "vars",
+    value: function vars() {
+      this.selectors = {
+        body: 'data-body',
+        nav: 'data-nav',
+        menu: 'data-menu-cta',
+        menuOverlay: 'data-menu-overlay',
+        slider: 'data-slider-wrapper',
+        activeClass: 'active',
+        disabledClass: 'disabled',
+        menuOpenClass: 'menu-open',
+        navOpenClass: 'nav-open',
+        navCloseClass: 'nav-close',
+        overflowClass: 'overflow'
+      };
+      this.body = document.querySelector("[".concat(this.selectors.body, "]"));
+      this.nav = document.querySelector("[".concat(this.selectors.nav, "]"));
+      this.menu = document.querySelector("[".concat(this.selectors.menu, "]"));
+      this.menuOverlay = document.querySelector("[".concat(this.selectors.menuOverlay, "]"));
+      this.slider = document.querySelector("[".concat(this.selectors.slider, "]"));
+      if (!this.body || !this.nav || !this.menu) return;
+      this.timer;
+      this.isExpanded = false;
+      this.isOpen = false;
+      this.isTransitionend = true;
+      this.isSwiped = true;
+      this.transitionDuration = 1000;
+      this.swipeTriggerPoint = 100;
+      return true;
+    }
+  }, {
+    key: "setupEvents",
+    value: function setupEvents() {
+      var _this = this;
+
+      this.menu.addEventListener('click', function () {
+        return _this.toggle();
+      });
+      this.menuOverlay.addEventListener('click', function () {
+        if (!_this.isOpen) return;
+
+        _this.hide();
+      });
+      window.addEventListener('resize', function () {
+        return _this.disableOnDesktop();
+      }); // Touch listeners
+
+      window.addEventListener('touchstart', function (event) {
+        _this.startPosition = Math.floor(event.touches[0].clientX);
+      });
+      window.addEventListener('touchmove', function (event) {
+        _this.endPosition = Math.floor(event.touches[0].clientX);
+      });
+      window.addEventListener('touchend', function (event) {
+        var eventTarget = event.target;
+        var closestEl = eventTarget.closest("[".concat(_this.selectors.slider, "]"));
+        if (closestEl === _this.slider) return;
+
+        _this.toggleOnSwipe();
+      });
+    }
+    /**
+    * Function to toggle menu
+    */
+
+  }, {
+    key: "toggle",
+    value: function toggle() {
+      if (!this.isTransitionend) return;
+      !this.isOpen ? this.show() : this.hide();
+    }
+    /**
+    * Function to display menu
+    */
+
+  }, {
+    key: "show",
+    value: function show() {
+      var _this2 = this;
+
+      this.isTransitionend = false;
+      this.isOpen = !this.isOpen;
+      this.isExpanded = !this.isExpanded;
+      this.nav.classList.add("".concat(this.selectors.menuOpenClass));
+      this.nav.classList.add("".concat(this.selectors.navOpenClass));
+      this.body.classList.add("".concat(this.selectors.overflowClass));
+      this.menuOverlay.classList.add("".concat(this.selectors.activeClass));
+      this.menu.setAttribute('aria-expanded', this.isExpanded);
+      this.timer = setTimeout(function () {
+        _this2.isTransitionend = true;
+      }, this.transitionDuration);
+    }
+    /**
+    * Function to hide menu
+    */
+
+  }, {
+    key: "hide",
+    value: function hide() {
+      var _this3 = this;
+
+      this.isTransitionend = false;
+      this.isOpen = !this.isOpen;
+      this.isExpanded = !this.isExpanded;
+      this.nav.classList.add("".concat(this.selectors.navCloseClass));
+      this.menuOverlay.classList.add("".concat(this.selectors.disabledClass));
+      this.nav.classList.remove("".concat(this.selectors.menuOpenClass));
+      this.menu.setAttribute('aria-expanded', this.isExpanded);
+      this.timer = setTimeout(function () {
+        _this3.nav.classList.remove("".concat(_this3.selectors.navOpenClass));
+
+        _this3.nav.classList.remove("".concat(_this3.selectors.navCloseClass));
+
+        _this3.body.classList.remove("".concat(_this3.selectors.overflowClass));
+
+        _this3.menuOverlay.classList.remove("".concat(_this3.selectors.activeClass));
+
+        _this3.menuOverlay.classList.remove("".concat(_this3.selectors.disabledClass));
+
+        _this3.isTransitionend = true;
+        _this3.timer = false;
+      }, this.transitionDuration);
+    }
+    /**
+    * Function to disable menu on desktop
+    */
+
+  }, {
+    key: "disableOnDesktop",
+    value: function disableOnDesktop() {
+      this.windowWidth = window.innerWidth;
+      this.breakpoint = 768;
+
+      if (this.windowWidth > this.breakpoint) {
+        this.body.classList.remove("".concat(this.selectors.overflowClass));
+        this.nav.classList.remove("".concat(this.selectors.navOpenClass));
+        this.nav.classList.remove("".concat(this.selectors.navCloseClass));
+        this.nav.classList.remove("".concat(this.selectors.menuOpenClass));
+        this.menuOverlay.classList.remove("".concat(this.selectors.activeClass));
+        this.menuOverlay.classList.remove("".concat(this.selectors.disabledClass));
+        this.isTransitionend = true;
+        this.isOpen = false;
+        this.isExpanded = false;
+        this.menu.setAttribute('aria-expanded', this.isExpanded);
+      }
+    }
+    /**
+    * Function to toggle nav on touch slide
+    */
+
+  }, {
+    key: "toggleOnSwipe",
+    value: function toggleOnSwipe() {
+      var _this4 = this;
+
+      if (!this.isSwiped) return;
+      this.isSwiped = !this.isSwiped;
+      this.touchSlideLength = this.endPosition - this.startPosition;
+
+      if (this.touchSlideLength > this.swipeTriggerPoint) {
+        this.toggle();
+      }
+
+      window.setTimeout(function () {
+        _this4.isSwiped = true;
+      }, this.transitionDuration);
+    }
+  }]);
+
+  return ToggleMenu;
 }();
 
 
