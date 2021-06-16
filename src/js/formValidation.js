@@ -36,7 +36,7 @@ export default class FormValidation {
 
         this.emailValidation(this.inputValue) ?
             this.form.submit() :
-            this.form.classList.add(`${this.selectors.invalidClass}`);
+            (this.form.classList.add(`${this.selectors.invalidClass}`), this.form.reset());
     }
 
     /**

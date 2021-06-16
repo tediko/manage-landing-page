@@ -83,7 +83,7 @@ var FormValidation = /*#__PURE__*/function () {
     value: function formValidation(event) {
       event.preventDefault();
       this.inputValue = this.input.value;
-      this.emailValidation(this.inputValue) ? this.form.submit() : this.form.classList.add("".concat(this.selectors.invalidClass));
+      this.emailValidation(this.inputValue) ? this.form.submit() : (this.form.classList.add("".concat(this.selectors.invalidClass)), this.form.reset());
     }
     /**
     * Function that check if our email is correct
