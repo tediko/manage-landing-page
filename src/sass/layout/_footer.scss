@@ -4,6 +4,11 @@
     $root: &;
     background-color: $c-blue-dark-very;
     padding: 63px 24px 31px 24px;
+    opacity: 0;
+
+    &.animated {
+        animation: slide-bottom 1500ms ease-in-out forwards;
+    }
 
     &__container {
         display: grid;
