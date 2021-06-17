@@ -10,6 +10,7 @@ export default class StickyHeader {
             kvSection: 'data-kv',
             scrollInClass: 'header-scroll-in',
             scrollOutClass: 'header-scroll-out',
+            onLoadClass: 'header-on-load'
         }
 
         this.header = document.querySelector(`[${this.selectors.header}]`);
@@ -39,6 +40,7 @@ export default class StickyHeader {
 
         this.observer = new IntersectionObserver((entries, observer) => {
             if (this.isInitialized) {
+                this.header.classList.remove(`${this.selectors.onLoadClass}`);
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) {
                         this.header.classList.add(`${this.selectors.scrollInClass}`);
