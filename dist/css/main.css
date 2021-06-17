@@ -225,7 +225,6 @@ a:focus-visible {
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icons" !important;
-  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -744,16 +743,16 @@ i {
   }
 }
 .slider__reference--anisha::before {
-  background-image: url("../../dist/img/avatar-anisha.png");
+  background-image: url("../img/avatar-anisha.png");
 }
 .slider__reference--ali::before {
-  background-image: url("../../dist/img/avatar-ali.png");
+  background-image: url("../img/avatar-ali.png");
 }
 .slider__reference--richard::before {
-  background-image: url("../../dist/img/avatar-richard.png");
+  background-image: url("../img/avatar-richard.png");
 }
 .slider__reference--shanai::before {
-  background-image: url("../../dist/img/avatar-shanai.png");
+  background-image: url("../img/avatar-shanai.png");
 }
 .slider__reference-text {
   margin-top: 18px;
