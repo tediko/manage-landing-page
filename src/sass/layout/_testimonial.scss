@@ -4,6 +4,11 @@
     $root: &;
     padding: 0 20px;
     margin-bottom: 57px;
+    opacity: 0;
+
+    &.animated {
+        animation: slide-bottom 1500ms ease-in-out forwards;
+    }
 
     @include breakpoint(md) {
         padding: 0;
