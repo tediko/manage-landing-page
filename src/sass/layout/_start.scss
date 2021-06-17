@@ -6,6 +6,11 @@
     background-color: $c-red-bright;
     padding: 91px 24px;
     overflow: hidden;
+    opacity: 0;
+
+    &.animated {
+        animation: slide-bottom 1500ms ease-in-out forwards;
+    }
 
     &::before {
         position: absolute;
