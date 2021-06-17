@@ -120,10 +120,10 @@
 }
 
 /* Global */
-@keyframes slide-bottom{
+@keyframes slide-bottom {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(50px);
     }
     100% {
         opacity: 1;
@@ -131,7 +131,7 @@
     }
 }
 
-@keyframes opacity{
+@keyframes opacity {
     0% {
         opacity: 0;
     }
