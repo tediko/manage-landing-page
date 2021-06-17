@@ -53,11 +53,17 @@
         flex-flow: column;
         text-align: center;
         padding: 0 31px;
+        opacity: 0;
 
         @include breakpoint(md) {
             text-align: left;
             padding: 0;
             width: 50%;
+            align-self: start;
+        }
+
+        &.animated {
+            animation: opacity 1500ms ease-in-out forwards;
         }
     }
     
@@ -87,6 +93,14 @@
 
         @include breakpoint(lg) {
             gap: 39px;
+        }
+    }
+
+    &__features-card {
+        opacity: 0;
+
+        &.animated {
+            animation: slide-bottom 1500ms ease-in-out forwards;
         }
     }
 
