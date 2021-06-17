@@ -13,6 +13,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _toggleMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toggleMenu */ "./src/js/toggleMenu.js");
 /* harmony import */ var _stickyHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stickyHeader */ "./src/js/stickyHeader.js");
 /* harmony import */ var _formValidation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./formValidation */ "./src/js/formValidation.js");
+/* harmony import */ var _onScrollAnimations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./onScrollAnimations */ "./src/js/onScrollAnimations.js");
+/* harmony import */ var _loadEvents__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./loadEvents */ "./src/js/loadEvents.js");
+
+
 
 
 
@@ -21,6 +25,8 @@ var slider = new _slider__WEBPACK_IMPORTED_MODULE_0__.default();
 var menu = new _toggleMenu__WEBPACK_IMPORTED_MODULE_1__.default();
 var header = new _stickyHeader__WEBPACK_IMPORTED_MODULE_2__.default();
 var form = new _formValidation__WEBPACK_IMPORTED_MODULE_3__.default();
+var onScroll = new _onScrollAnimations__WEBPACK_IMPORTED_MODULE_4__.default();
+var onLoad = new _loadEvents__WEBPACK_IMPORTED_MODULE_5__.default();
 
 /***/ }),
 
@@ -99,6 +105,148 @@ var FormValidation = /*#__PURE__*/function () {
   }]);
 
   return FormValidation;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/loadEvents.js":
+/*!******************************!*\
+  !*** ./src/js/loadEvents.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LoadEvents)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var LoadEvents = /*#__PURE__*/function () {
+  function LoadEvents() {
+    _classCallCheck(this, LoadEvents);
+
+    if (!this.vars()) return false;
+    this.setupEvents();
+  }
+
+  _createClass(LoadEvents, [{
+    key: "vars",
+    value: function vars() {
+      this.selectors = {
+        body: 'data-body',
+        loadingClass: 'loading'
+      };
+      this.body = document.querySelector("[".concat(this.selectors.body, "]"));
+      if (!this.body) return false;
+      return true;
+    }
+    /**
+    * Watching when whole page is loaded including stylesheets and images
+    * and then invoke showAnimation().
+    */
+
+  }, {
+    key: "setupEvents",
+    value: function setupEvents() {
+      var _this = this;
+
+      window.addEventListener('load', function () {
+        return _this.showAnimations();
+      });
+    }
+    /**
+    * Function to remove class from body
+    */
+
+  }, {
+    key: "showAnimations",
+    value: function showAnimations() {
+      this.body.classList.remove("".concat(this.selectors.loadingClass));
+    }
+  }]);
+
+  return LoadEvents;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/onScrollAnimations.js":
+/*!**************************************!*\
+  !*** ./src/js/onScrollAnimations.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ OnScrollAnimations)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var OnScrollAnimations = /*#__PURE__*/function () {
+  function OnScrollAnimations() {
+    _classCallCheck(this, OnScrollAnimations);
+
+    if (!this.vars()) return;
+    this.setupEvents();
+  }
+
+  _createClass(OnScrollAnimations, [{
+    key: "vars",
+    value: function vars() {
+      this.selectors = {
+        elementsToAnimate: 'data-animate',
+        animateClass: 'animated'
+      };
+      this.elementsToAnimate = document.querySelectorAll("[".concat(this.selectors.elementsToAnimate, "]"));
+      if (!this.elementsToAnimate) return;
+      return true;
+    }
+  }, {
+    key: "setupEvents",
+    value: function setupEvents() {
+      var _this = this;
+
+      this.elementsToAnimate.forEach(function (element) {
+        _this.scrollObserver(element);
+      });
+    }
+    /**
+    * Function to start observe element and add class with animation to it.
+    * @param    {Element} element    Element to observe
+    */
+
+  }, {
+    key: "scrollObserver",
+    value: function scrollObserver(element) {
+      var _this2 = this;
+
+      this.options = {
+        threshold: 0.7
+      };
+      this.observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("".concat(_this2.selectors.animateClass));
+          }
+        });
+      }, this.options);
+      this.observer.observe(element);
+    }
+  }]);
+
+  return OnScrollAnimations;
 }();
 
 
@@ -432,7 +580,8 @@ var StickyHeader = /*#__PURE__*/function () {
         header: 'data-header',
         kvSection: 'data-kv',
         scrollInClass: 'header-scroll-in',
-        scrollOutClass: 'header-scroll-out'
+        scrollOutClass: 'header-scroll-out',
+        onLoadClass: 'header-on-load'
       };
       this.header = document.querySelector("[".concat(this.selectors.header, "]"));
       this.kvSection = document.querySelector("[".concat(this.selectors.kvSection, "]"));
@@ -462,6 +611,8 @@ var StickyHeader = /*#__PURE__*/function () {
       };
       this.observer = new IntersectionObserver(function (entries, observer) {
         if (_this.isInitialized) {
+          _this.header.classList.remove("".concat(_this.selectors.onLoadClass));
+
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) {
               _this.header.classList.add("".concat(_this.selectors.scrollInClass));
