@@ -16,6 +16,11 @@
         padding: 55px 24px 0 24px;
     }
 
+    &.header-on-load {
+        opacity: 0;
+        animation: init-header-slide 1000ms ease-in forwards;
+    }
+
     &.header-scroll-in {
         position: fixed;
         background-color: $c-white;
