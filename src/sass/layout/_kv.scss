@@ -56,6 +56,8 @@
         max-width: 600px;
         max-height: 550px;
         margin: 0 auto;
+        opacity: 0;
+        animation: init-illustration-rotate 1000ms ease-in forwards;
 
         @include breakpoint(md) {
             order: 1;
@@ -77,6 +79,8 @@
         text-align: center;
         max-width: 490px;
         margin: 0 auto;
+        opacity: 0;
+        animation: init-intro-slide 1000ms ease-in forwards;
         
         @include breakpoint(md) {
             order: 0;
