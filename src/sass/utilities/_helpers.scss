@@ -64,6 +64,13 @@
     overflow: hidden;
 }
 
+/* Pause animation until images are loaded */
+.loading *,
+.loading *::before,
+.loading *::after {
+    animation-play-state: paused !important;
+}
+
 /* Headings */
 .heading {
     font-weight: 700;
